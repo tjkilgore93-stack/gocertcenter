@@ -61,19 +61,36 @@ services and customer-specific application connections.
 
 ## Installation
 
-**Note**: Installation instructions will be detailed upon the MVP v1 release, 
-including guidance for both on-premise and SaaS deployments.
+### Run locally
+
+The current application can be run from the repository root with Go 1.21 or
+later:
+
+```sh
+go run ./cmd/gocertcenter
+```
+
+The server listens on port `8080` by default. Set `PORT` or pass `-port` to use
+a different port, for example `PORT=9090 go run ./cmd/gocertcenter`.
+
+This is a development setup, not a production deployment guide. The current
+executable uses an in-memory repository, so organizations, certificates, and
+other application state are lost when the process stops.
 
 ## Usage
 
-Upon project completion, we will provide extensive usage documentation, 
-covering REST API interactions and guidance on integrating CMM into your 
-projects, whether for on-premise use or as a part of our SaaS offering at 
-[https://cert.center](https://cert.center).
+Run the server as described above, then use the REST API routes listed in the
+generated OpenAPI document. To run the test suite during development:
+
+```sh
+go test ./...
+```
 
 ### OpenAPI
 
-Available from http://localhost:8080/documentation/json
+While the server is running, the OpenAPI document is available at
+<http://localhost:8080/documentation/json> (replace `8080` if using another
+port).
 
 ## Development
 
